@@ -1,0 +1,133 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+//создание четырех переменных + ввод их значений
+int main()
+{
+    int num1;
+	float num2;
+	double torf;
+	string word;
+	cout << "Input num1:";
+	cin >> num1;
+	cout << "Input num2:";
+	cin >> num2;
+	cout << "Input torf:";
+	cin >> torf;
+	cout << "Input word:";
+	cin >> word;
+	cout << num1 << endl;
+	cout << num2 << endl;
+	cout << torf << endl;
+	cout << word << endl;
+
+//создоние 5-ти переменных типа char
+    string slovo;
+    cout << "Введите слово из 5-ти букв:";
+    cin >> slovo;
+    char bykva1 = slovo[0];
+    char bykva2 = slovo[1];
+    char bykva3 = slovo[2];
+    char bykva4 = slovo[3];
+    char bykva5 = slovo[4];
+    cout << "Введенное слово:" << " " << bykva1 << bykva2 << bykva3 << bykva4 << bykva5 << endl;
+    
+//вывод суммы, произведения, разнцы и СА
+    float a, b;
+    cout << "Введите два числа:";
+    cin >> a >> b;
+    cout << "Сумма: " << a+b << endl;
+    cout << "Разность: " << a-b << endl;
+    cout << "Произведение: " << a*b << endl;
+    cout << "СА: " << (a+b)/2 << endl;
+    
+//принцип Дирихле
+    int n, m;
+    double k;
+    cin >> n >> m;
+    k = m / n;
+    if (k >= 1) cout << (m + n - 1) / n << endl;
+    else cout << 1 << endl;
+    
+//Сумма чисел от 1 до 100
+    float f = (100/2)*(1+100);
+    cout << "Сумма: " << f << endl;
+    
+//Периметр и площадь квадрата
+    float a_1, P, S;
+    cout << "Введите сторону квадрата: ";
+    cin >> a_1;
+    P = a_1*4;
+    S = pow(a_1, 2);
+    cout << "Периметр: " << P << " " << "Площадь: " << S << endl;
+    
+//Гипотенуза прямоугольного треугольника
+    float katet1, katet2;
+    cout << "Введите значения двух катетов: ";
+    cin >> katet1 >> katet2;
+    cout << "Гипотенуза: " << sqrt(pow(katet1, 2)+pow(katet2, 2)) << endl;
+    
+//Остаток от деления
+    int K, N, porovny, ost;
+    cout << "Введите количество яблок и школьников: ";
+    cin >> K >> N;
+    porovny = K/N;
+    ost = K%N;
+    cout << "В корзине осталось: " << ost << " " << "Каждый получил по: " << porovny << " яблок(у)" << endl;
+    
+//Значение функции f(x)=x^2+3x-100
+    float x, fx;
+    cin >> x;
+    fx = pow(x, 2) + 3*x - 100;
+    cout << fx << endl;
+    
+//ФИО
+    string F, I, O, groupnum;
+    cout << "Введите ФИО и номер группы: ";
+    cin >> F >> I >> O >> groupnum;
+    cout << "ФИО: " << F << " " << I << " " << O << " " << "Номер группы: " << groupnum;
+    
+//Решения квадратного уравнения 3x^2-10x+1=0
+    float a3, b3, c3, D, t1, t2;
+    b3 = -10;
+    a3 = 3;
+    c3 = 1;
+    D = sqrt(pow(b3, 2) - 4*a3*c3);
+    t1 = (-b3 - D)/(2*c3);
+    t2 = (-b3 + D)/(2*c3);
+    cout << "Корни уравнения: " << t1 << ", " << t2 << endl;
+    
+//Энтропия по Шеннону
+    float p1, p2, H;
+    cout << "Введите две вероятности: ";
+    cin >> p1 >> p2;
+    H = (p1*log2((1/p1)) + p2*log2((1/p2)));
+    cout << "Энтропия равна: " << H << endl;
+    
+//Серфировка
+    int lojki, chawki, bludca, chel;
+    cout << "Введите количество людей: ";
+    cin >> chel;
+    lojki = chel;
+    bludca = chel;
+    chawki = chel;
+    cout << "Общее количество предметов для серфировки: " << lojki+chawki+bludca << endl;
+
+//Обмен значений a и b
+    int n, m, y;
+    cin >> n >> m;
+    y = n;
+    n = m;
+    m = y;
+    cout << n << " " << m << endl;
+    
+//Обмен значений a и b(без дополнительных переменных)
+    float a1, b1;
+    cin >> a1 >> b1;
+    a1 = b1 + a1;
+    b1 = a1 - b1;
+    a1 = a1 - b1;
+    cout << a1 << " " << b1 << endl;
+    return 0;
+}
