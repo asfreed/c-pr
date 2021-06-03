@@ -1,0 +1,164 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+//Вывод нечётного числа
+    int a2, b2;
+    cout << "Введите два случайных числа(одно из них должно быть четное, другое - нечетное): ";
+    cin >> a2 >> b2;
+    if ((a2 % 2) == 1)
+    cout << a2 << " - нечётное" << endl;
+    else if ((b2 % 2) == 1)
+    cout << b2 << " - нечётное" << endl;
+    
+//Вывод среднего числа
+    float num1, num2, num3;
+    cout << "Введите три разных числа: ";
+    cin >> num1 >> num2 >> num3;
+    if (((num1 > num2) and (num1 < num3)) or ((num1 > num3) and (num1 < num2)))
+    cout << "Среднее число: " << num1 << endl;
+    else if (((num2 > num1) and (num2 < num3)) or ((num2 > num3) and (num2 < num1)))
+    cout << "Среднее число: " << num2 << endl;
+    else if (((num3 > num2) and (num3 < num1)) or ((num3 > num1) and (num3 < num2)))
+    cout << "Среднее число: " << num3 << endl;
+    else if ((num1 == num2) or (num2 == num3) or (num3 == num1))
+    cout << "Неверный ввод чисел";
+    
+//Перевод числа в байты или килобайты
+    float xx;
+    int choose;
+    cout << "Введите число: ";
+    cin >> xx;
+    cout << "Выберите перевод числа: " << " 1 - перевести в байты " << " 2 - перевести в килобайты";
+    cin >> choose;
+    switch (choose)
+    {
+        case 1:
+            cout << xx << "Кб = " << xx * 1024 << "байт" << endl;
+            break;
+        case 2:
+            cout << xx << "байт = " << xx / 1024 << "Кб" << endl;
+            break;
+        default:
+            cout << "Такой перевод не предусмотрен программой" << endl;
+    }
+    
+//Определение кода буквы/символа
+    int kod;
+    cout << "Введите целое число: ";
+    cin >> kod;
+    cout << kod << endl;
+    if (kod >= 'A' && kod <= 'Z' || kod >= 'a' && kod <= 'z')
+    cout << "Это число, обозночающее букву английского алфавита " << char(kod) << endl;
+    else cout << "Это не буква, а символ " << char(kod) << endl;
+    
+//Деление целых чисел друг на друга
+    int num_1, num_2;
+    cout << "Введите два целых числа: ";
+    cin >> num_1 >> num_2;
+    if ((num_1 / num_2) == 0) cout << "Первое число не делится на второе\nОстаток: " << num_1 % num_2;
+    else if ((num_1 / num_2) >= 1) cout << "\nПервое число делится на второе\nОстаток: " << num_1 % num_2;
+    cout << "\nЧастное: " << (num_1 / num_2) << endl;
+    
+//Определение высокосного года
+    int year;
+    cout << "Введите год: ";
+    cin >> year;
+    if (year % 4 != 0) cout << "Год является обычным";
+    else if (year % 100 == 0 and year % 400 != 0) cout << "\nГод является обычным";
+    else cout << "\nГод является высокосным" << endl;
+
+//Определение корней квадратного уравнения
+    float a, b, c, D, x1, x2;
+    cout << "Введите значения a, b, c в формате квадратного уравнения(ax^2 + bx + c): ";
+    cin >> a >> b >> c;
+    D = b * b - 4 * a * c;
+    if (D > 0) {
+        x1 = (-b + sqrt(D)) / (2 * a);
+        x2 = (-b - sqrt(D)) / (2 * a);
+        cout << "\nКорни уравнения: \nx1 = " << x1 << "\tx2 = " << x2 << endl;
+    }
+     else
+        if (D = 0) {
+            x1 = -b / (2*a);
+            x1 = x2;
+            cout << "\nКорни уравнения:\nx1 = x2 =" << x1 << endl;
+        }
+    else cout << "\nКорней не существует" << endl;
+    
+//Определение четверти координат
+    float x3, y3;
+    cout << "\nВведите координаты x и y:\n";
+    cin >> x3 >> y3;
+    if (x3 > 0 and y3 > 0) cout << "\nТочка находится в первой четверти координат\n";
+    else if (x3 < 0 and y3 > 0) cout << "\nТочка находится во второй четверти координат\n";
+    else if (x3 < 0 and y3 < 0) cout << "\nТочка находится в третьей четверти координат\n";
+    else if (x3 > 0 and y3 < 0) cout << "\nТочка находится в четвертой четверти координат\n";
+    else cout << ("\nТочка расположена в центре\n");
+    
+//Принадлежность точки к окружности с заданным радиусом
+    float x, y, r, h;
+    cout << "Координаты точки: ";
+    cin >> x >> y;
+    cout << "Радиус круга: ";
+    cin >> r;
+    h = sqrt(x * x + y * y);
+    cout << "Гипотенуза равна " << h;
+    if (h > r) cout << "\nТочка не принадлежит кругу.\n";
+    else cout << "Точка принадлежит кругу.\n";
+    
+//Определение значения функции y = f(x)
+    float x_1;
+    cout << "Введите x: ";
+    cin >> x_1;
+    if (x_1 > 0)
+    cout << "y = " << 2 * x_1 - 10 << endl;
+    else if (x_1 == 0)
+    cout << "y = " << 0 << endl;
+    else if (x_1 < 0)
+    cout << "y = " << 2 * abs(x_1) - 1 << endl;
+    
+//Определение наибольшего числа
+    int chislo1, chislo2, chislo3;
+    cout << "Введите три целых числа: ";
+    cin >> chislo1 >> chislo2 >> chislo3;
+    if (chislo1 > chislo2 and chislo1 > chislo3) cout << "\nНаибольшее число:\n" << chislo1;
+    else if (chislo2 > chislo1 and chislo2 > chislo3) cout << "\nНаибольшее число:\n" << chislo2;
+    else cout << "\nНаибольшее число:\n" << chislo3;
+    
+//Треугольник из 3-ых введенных сторон
+    int at, bt, ct;
+    cout << "Введите три стороны: ";
+    cin >> at >> bt >> ct;
+    if (at + bt <= ct || at + ct <= bt || bt + ct <= at) 
+        cout << "Треугольник не существует.\n";
+    else
+        if (at != bt && at != ct && bt != ct) 
+            printf("Разносторонний\n");
+        else
+            if (at == bt && bt == ct)
+                printf("Равносторонний\n");
+            else
+                printf("Равнобедренный\n");
+
+//Определение группы человека по возрасту
+    int age;
+    cout << "Введите возраст: ";
+    cin >> age;
+    if (age <=6) cout << "Дошкольник\n";
+    else if (age <=25) cout << "Ученик\n";
+    else if (age <=65) cout << "Работник\n";
+    else if (age > 65) cout << "Пенсионер\n";
+    
+//Условия приема
+    int age_1, staj;
+    cout << "Введите возраст: \n";
+    cin >> age_1;
+    cout << "Введите стаж работы: \n";
+    cin >> staj;
+    if (staj < 20 || age_1 > 42 || age_1 - staj < 14 ) cout << "Человек не будет принят\n";
+    else cout << "Человек будет принят\n";
+    return 0;
+}
