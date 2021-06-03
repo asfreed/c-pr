@@ -1,0 +1,145 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+//целое ближайшее число
+    int number, b1, m;
+    cout << "Введите два числа: ";
+    cin >> number >> b1;
+    m = number + b1 / 2;
+    if (m >= b1) {
+        cout << b1 * ((number + b1 / 2) / b1) << endl;
+    } else {
+        cout << b1 * (((number + b1 / 2) / b1) + 1) << endl;
+    }
+//гипотенуза
+    float katet1, katet2;
+    cout << "Введите значения двух катетов: ";
+    cin >> katet1 >> katet2;
+    cout << "Гипотенуза: " << sqrt(pow(katet1, 2)+pow(katet2, 2)) << endl;
+    
+//сумма и произведение трехзначного числа
+    int triplenum, n1, n2, n3;
+    cout << "Введите трехзначное число: ";
+    cin >> triplenum;
+    n1 = triplenum % 10;
+    triplenum = triplenum / 10;
+    n2 = triplenum % 10;
+    n3 = triplenum / 10;
+    cout << "Сумма: " << n1 + n2 + n3 << endl << "Произведение: " << n1 * n2 * n3 << endl;
+    
+//уравнение прямой
+    float x1, x2, y1, y2, m, k;
+    float straightline;
+    cout << "Введите координаты x и у первой точки: ";
+    cin >> x1 >> y1;
+    cout << "Введите координаты x и у второй точки: ";
+    cin >> x2 >> y2;
+    k = (y2 - y1) / (x2 - x1);
+    m = y1 - k * x1;
+    cout << "Уравнение прямой: " << "y = " << k << "x" << " + " << m << endl;
+    
+//Кредит
+    float monthpay, sumpay, credit, year, procentperyear, procentpermonth, month, p;
+    cout << "Введите сумму кредита: ";
+    cin >> credit;
+    cout << "Введите промежуток времени, на который берется кредит(в годах): ";
+    cin >> year;
+    cout << "Введите процент банка: ";
+    cin >> procentperyear;
+    month = 12 * year;
+    procentpermonth = procentperyear / 12;
+    p = procentpermonth / 100;
+    monthpay = (credit * (p + (p / (pow((1 + p), month) - 1))));
+    sumpay = monthpay * month;
+    cout << "Месячные выплаты: " << monthpay << " Сумма всех выплат: " << sumpay << endl;
+    
+//Обмен значений
+    float firstnum, secondnum, per1, per2;
+    cout << "Введите два числа: ";
+    cin >> firstnum >> secondnum;
+    per1 = firstnum;
+    per2 = secondnum;
+    per1 = per2;
+    per2 = firstnum;
+    
+//ab+dc
+    int fullnumber;
+    cout << "Введите четырехзначное число: ";
+    cin >> fullnumber;
+    cout << "Сумма ab+dc: " << (fullnumber / 1000) * (((fullnumber / 10) / 10) % 10) + (fullnumber % 10) * ((fullnumber / 10) % 10) << endl;
+    
+//Периметр
+    float w, dl, side1, side2, side3, s1, s2, s3, s4, Ppr, Ptr, Pprois;
+    cout << "Введите стороны прямоугольника (сначала ширину, а потом длину): ";
+    cin >> w >> dl;
+    Ppr = 2 * (w + dl);
+    cout << "Периметр прямоугольника равен: " << Ppr << endl;
+    cout << "Введите стороны треугольника: ";
+    cin >> side1 >> side2 >> side3;
+    Ptr = side1 + side2 + side3;
+    cout << "Периметр треугольника равен: " << Ptr << endl;
+    cout << "Введите стороны производного четырехугольника: ";
+    cin >> s1 >> s2 >> s3 >> s4;
+    Pprois = s1 + s2 + s3 + s4;
+    cout << "Периметр производного четырехугольника равен: " << Pprois << endl;
+    
+//Объем и площадь поверхности шара
+    float R, V, S;
+    const double pi  =3.141592653589793238463;
+    cout << "Введите радиус шара: ";
+    cin >> R;
+    S = 4 * pi * pow(R, 2);
+    V = (4 * pi * pow(R, 3)) / 3;
+    cout << "Площадь поверхности шара равна: " << S << endl;
+    cout << "Объём шара равен: " << V << endl;
+
+//Объём и площадь поверхности цилиндра
+    float Rc, h, Vc, Sc;
+    cout << "Введите радиус и высоту цилиндра: ";
+    cin >> Rc >> h;
+    Sc = 2 * pi * Rc * (Rc + h);
+    Vc = pi * pow(Rc, 2) * h;
+    cout << "Площадь поверхности цилиндра равна: " << Sc << endl;
+    cout << "Объём цилиндра равен: " << Vc << endl;
+
+//Площадь осевого сечения конуса
+    float Rk, H, Soc, L, D;
+    cout << "Введите радиус и образующую: ";
+    cin >> Rk >> L;
+    H = sqrt(pow(L, 2) - pow(Rk, 2));
+    D = 2 * Rk;
+    Soc = 0.5 * D * H;
+    cout << "Площадь осевого сечения равна: " << Soc << endl;
+
+//Площадь поверхности и объем прямого кругового конуса
+    float Vkk, Skk, Rkk, Hkk;
+    cout << "Введите радиус и высоту: ";
+    cin >> Rkk >> Hkk;
+    Lkk = sqrt(pow(Rkk, 2) + pow(Hkk, 2));
+    Vkk = (pi * pow(R, 2) * Hkk) / 3;
+    Skk = pi * Rkk * (Lkk + Rkk);
+    cout << "Площадь поверхности конуса равна: " << Skk << endl;
+    cout << "Объём конуса равен: " << Vkk << endl;
+
+//Площадь поверхности и объем правильной пирамиды
+    float Vp, Sp, A, Hp;
+    cout << "Введите сторону и высоту пирамиды: ";
+    cin >> A >> Hp;
+    Vp = (pow(A, 3) * sqrt(2)) / 12;
+    Sp = pow(A, 2) * sqrt(3);
+    cout << "Площадь поверхности треугольной пирамиды равна: " << Sp << endl;
+    cout << "Объём конуса равен: " << Vp << endl;
+    
+//Площадь поверхности и объем правильной шестиугольной пирамиды
+    float V6p, S6p, A6p, H6p;
+    cout << "Введите сторону и высоту пирамиды: ";
+    cin >> A6p >> H6p;
+    V6p = (sqrt(3) / 2) * H6p * pow(A6p, 2);
+    S6p = ((3 * sqrt(3)) / 2) * pow(A6p, 2):
+    cout << "Площадь поверхности шестиугольной пирамиды равна: " << S6p << endl;
+    cout << "Объём шестиугольной пирамиды равен: " << V6p << endl;
+    return 0;
+}
