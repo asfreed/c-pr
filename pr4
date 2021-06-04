@@ -1,0 +1,276 @@
+#include <iostream>
+#include <cmath>
+#include <stdio.h>
+#define N 1000
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+//Подсчет посетителей зала
+    int human, amountDigits;
+    double max, min, totalSum;
+    double age = 0;
+    
+    cout << "Введите количество посетителей: \n";
+    cin >> human;
+    cout << "Введите возраст каждого посетителя\n\n";
+    
+    do {
+        
+        cout << "Возраст " << amountDigits + 1 << "-ого" << " = ";
+        cin >> age;
+        if (amountDigits == 0) {
+            min = age;
+            max = age;
+        }
+        
+        amountDigits++;
+        totalSum += age;
+        --human;
+        
+        if (max < age) {
+            max = age;
+        }
+        if (min > age) {
+            min = age;
+        }
+        
+    } while (human);
+    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "Возраст самого младшего посетителя: " << min << endl;
+    cout << "Возраст самого старшего посетителя: " << max << endl;
+    cout << "Средний возраст посетителей: " << totalSum / amountDigits << endl;
+    
+//Распределение ящиков с яблоками по машинам 
+    int yawik = 15;
+    int amountDigits1 = 0;
+    double kol = 0;
+    
+    do {
+        
+        cout << "\nСколько ящиков поместить " << amountDigits1 + 1 << "-ю машину: ";
+        cin >> kol;
+        
+        if (kol > yawik) {
+            cout << "\nНа складе нет такого количества ящиков\n";
+        }
+        
+        if (kol <= yawik){
+            amountDigits1++;
+            yawik -= kol;
+            cout << "\nНа складе осталось: " << yawik << "ящик(ов)\n";
+        }
+        
+    } while (yawik);
+    cout << "Все ящики распределенны по машинам." << endl;
+    
+//Сумма нечетных целых чисел
+    int amountDigits2;
+    double totalSum1;
+    float digit;
+    
+    cout << "Введите числа (выйти - 0)\n\n";
+    do {
+        
+        cout << "Число " << amountDigits2 + 1 << " = ";
+        cin >> digit;
+        
+        if ((int(digit) % 2) != 0) {
+            totalSum1 += digit;
+        }
+        
+        amountDigits2++;
+        
+    } while (digit);
+    cout << "Общая сумма нечетных чисел: " << totalSum1 << endl;
+    
+//Наибольшая цифра натурального числа
+    unsigned long int natnum;
+    int maxcifra = 0;
+    cout << "Введите натуральное число: ";
+    cin >> natnum;
+    do {
+        
+        if ((natnum % 10) > maxcifra) {
+            maxcifra = natnum % 10;
+            
+            if (maxcifra == 9) {
+                break;
+            }
+            
+        }
+        
+        natnum = natnum / 10;
+        
+    } while (natnum);
+    cout << "Наибольшая цифра введенного числа: " << maxcifra << endl;
+    
+//Проверка корректность работы генератора псевдослучайных чисел
+    int i, q;
+    q = 0;
+    srand(time(NULL));
+    
+    for (i = 0; i < N; i++) 
+    
+        if (rand() % 100 % 2 == 0)
+            q += 1;
+            
+    printf("%.2f%%\n", (float)q/N * 100);
+    
+//Проверка выполнения равенства: 1+2+...+n = n(n+1)/2, где n - любое натуральное число.
+    unsigned int n, k, s, m;
+    scanf("%d", &n);
+    s = 0;
+    
+    for (k = 1; k <= n; k++) s += k;
+    m = n * (n+1) / 2;
+    
+    printf("%d\n%d\n", s, m);
+    
+//Отгадывание числа от 0 до 100
+    int l, o;
+    int p = 1;
+    int trial = 10;
+    srand(time(NULL));
+    l = rand() % 100;
+    cout << "Отгадайте число от 0 до 100 за 10 попыток\n\n";
+    do {
+        
+        printf("%s\t%d\n\n", "Попытка", p);
+        scanf("%d", &o);
+        trial--;
+        p++;
+        
+        if (l == o) {
+            cout << "\nПоздравляем! Вы угадали число!\n";
+            break;
+        }
+        else if (o < l) {
+            printf("Загаданное число больше\n");
+        }
+        else if (o > l) { 
+            printf("Загаданное число меньше\n");
+        }
+        
+        if (trial == 0) {
+            printf("%s %d", "К сожалению, вы не угадали число\nЗагаданное число: ", l);
+        }
+        
+    } while (trial);
+    
+//Вывод ASCLL
+    short cod;
+    
+    for (cod = 32; cod <= 127; cod++) {
+        printf(" %3d-%c", cod, cod);
+        
+        if (cod % 10 == 0)
+        printf("\n");
+    }
+    printf("\n");
+    
+//Определение четных/нечетных цифр в числе
+    int f, even, odd;
+    scanf("%d",&f);
+    even = 0; 
+    odd = 0;
+    
+    while (f > 0) {
+        if (f % 2 == 0) even += 1;
+        else odd += 1;
+        f = f/10;
+    }
+    printf("четных - %d, нечетных - %d\n", even, odd);
+    
+//Ряд Фибиначи
+    unsigned int n3, i3, f1, f2, b;
+    scanf("%d", &n3);
+    f1 = 1;
+    f2 = 2;
+    printf("%d %d ", f1, f2);
+    
+    for (i3 = 3; i3 <= n3; i3++) {
+        printf("%d ", f1 + f2);
+        b = f1;
+        f1 = f2;
+        f2 = b + f1;
+    }
+    printf("\n");
+    
+//Ряд натуральных чисел с заданным шагом
+    int aa, bb, cc;
+    printf("Введите числа в порядке: минимальное - максимальное - шаг");
+    scanf("%d%d%d",&aa, &bb, &cc);
+    
+    for (aa; aa <= bb; aa += cc)
+    printf("%d ", aa);
+    printf("\n");
+
+//Обратное число
+    unsigned int n4, m4;
+    scanf("%d", &n4);
+    m4 = 0;
+    
+    while (n4 > 0) {
+        m4 = m4 * 10 + n4 % 10;
+        n4 = n4 / 10;
+    }
+    printf("%d\n", m4); 
+    
+//Сумму и произведение цифр, введенного натурального числа
+    unsigned int n5, Sum, Prois;
+    scanf("%d", &n5);
+    Prois = 1;
+    Sum = 0;
+    
+    while (n5 > 0) {
+        Sum += n5 % 10;
+        Prois *= n5 % 10;
+        if ((n5 % 10) == 0)
+        Prois++;
+        n5 = n5 / 10;
+    }
+    printf("Сумма: %d\nПроизведение: %d\n", Sum, Prois);
+    
+//Математические действия
+    float x, y;
+    char sign ='+';
+    while (sign != '0') 
+    {
+        printf("Знак: ");
+        scanf("%c%*c", &sign);
+        
+        if (sign == '0') { break; }
+        
+        if (sign == '+' || sign == '-' || sign == '*' || sign == '/') {
+            printf("x=");
+            scanf("%f%*c", &x);
+            printf("y=");
+            scanf("%f%*c", &y);
+            
+            switch (sign) {
+                
+                case '+':
+                    printf("%.2f\n", x+y);
+                    break;
+                    
+                case '-':
+                    printf("%.2f\n", x-y);
+                    break;
+                    
+                case '*':
+                    printf("%.2f\n", x*y);
+                    break;
+                    
+                case '/':
+                    if (y != 0) printf("%.2f\n", x/y);
+                    else printf("Деление на ноль!\n");
+            }
+            
+        }
+        
+        else printf("Неверно указан знак операции\n");
+    }
+    return (0);
+}
