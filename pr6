@@ -4,7 +4,18 @@
 using namespace std;
 
 //№1(вызов числа при вводе тогоже числа)
-
+int f()
+{
+    static int n;
+    n++;
+    return n;
+}
+int main()
+{
+    for (int i = 0; i < 10; i++)
+        cout << f() << " ";
+    return 0;
+}
 
 //№2(Good... без переменных)
 char f(int x)
@@ -44,30 +55,370 @@ int f(int x)
             new1 = x;
         }
     }
-    
     return old;
 }
 int main()
 {
-    int a, b, c, n, v;
-    scanf("%d%d%d%d%d", &a, &b, &c, &n, &v);
-    printf("%d\n", f(a));
-    printf("%d\n", f(b));
-    printf("%d\n", f(c));
-    printf("%d\n", f(n));
-    printf("%d\n", f(v));
+    int x;
+    for (int i = 0; i < 10; i++) {
+        scanf("\n%d", &x);
+        printf("%d ", f(x));
+    }
     return 0;
 }
 //№4()
 
-//№5()
+//№5(Возврат среднего арифметического всех переданных этой функции параметров)
+double f(double a)
+{
+    static double sum = 0., num = 0.;
+    double avg;
+    num += 1;
+    sum += a;
+    avg = sum / num;
+    return (avg);
+}
+int main()
+{
+    double x;
+    for (int i = 0; i < 3; i++) {
+        scanf("\n%lf", &x);
+        printf("%lf ", f(x));
+    }
+    return 0;
+}
+//№6(Возврат старого значения + 1)
+int f(int m)
+{
+    static int old = 0, num;
+    num = 1 + old;
+    old = m;
+    return num;
+}
+int main()
+{
+    int x;
+    for (int i = 0; i < 4; i++) {
+        scanf("\n%d", &x);
+        printf("%d ", f(x));
+    }
+    return 0;
+}
 
-//№6()
+//№7(Возврат суммы, равной сумме трех последних параметров)
+int f(int m)
+{
+    static int old1 = 0, old2 = 0, old3 = 0, sum;
+    sum = old1 + old2 + old3; //Исключая последний вызов
+    old3 = old2;
+    old2 = old1;
+    old1 = m;
+    sum = old1 + old2 + old3; //Включая последний вызов
+    return sum;
+}
+int main()
+{
+    int x;
+    for (int i = 0; i < 4; i++) {
+        scanf("%d", &x);
+        printf("%d ", f(x));
+    }
+    return 0;
+}
+//№8(Функция, заполняющая массив)
+template <typename T>
+void f(T a[], int size)
+{
+    srand(time(NULL));
+    for (int i = 0; i < size; i++) {
+        a[i] = rand() % 100;
+        printf("%d ", a[i]);
+        if ((i + 1) % 10 == 0) {
+            printf("\n");
+        }
+    }
+    printf("\n");
+}
+int main()
+{
+    const int sizea = 10, sizeb = 20;
+    int a[sizea], b[sizeb];
+    f(a, sizea);
+    f(b, sizeb);
+    return 0;
+}
 
-//№7()
+//№9(Функции для заполнение масива 5x5 и нахождения мин/макс элемента)
+template <typename T>
+void maxfunc(T a[])
+{
+    int max = a[0][0];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (a[i][j] > max) {
+                max = a[i][j];
+            }
+        }
+    }
+    printf("\n%s%d\n", "Максимальный элемент: ", max);
+}
 
-//№8()
+template <typename T>
+void minfunc(T a[])
+{
+    int minn = 0, minm = 0;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (a[i][j] < a[minn][minm]) {
+                a[minn][minm] = a[i][j];
+            }
+        }
+    }
+    printf("\n%s%d\n", "Минимальный элемент: ", a[minn][minm]);
+}
 
-//№9()
+template <typename T>
+void f(T a[])
+{
+    srand(time(NULL));
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            a[i][j] = rand() % 30 + 30;
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
 
-//№10()
+int main()
+{
+    int a[5][5];
+    f(a);
+    minfunc(a);
+    maxfunc(a);
+    return 0;
+}
+
+//№10(                     Игра с кубиком                         )
+void kubic(int a)
+{
+    switch (a) {
+        case 1:
+            printf("\n");
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (i == 0 or i == 6) {
+                        printf("%c", '*');
+                    }
+                    else if (j == 0 or j == 8) {
+                        printf("%c", '*');
+                    }
+                    else if ((i != 0 and i != 6) and j == 4) {
+                        printf("%c", '|');
+                    }
+                    else if (i == 1 and j == 3) {
+                        printf("%c", '/');
+                    }
+                    else if (i == 2 and j == 2) {
+                        printf("%c", '/');
+                    }
+                    else printf(" ");
+                }
+                printf("\n");
+            }
+            printf("\n");
+            break;
+        case 2:
+        printf("\n");
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (i == 0 or i == 6) {
+                        printf("%c", '*');
+                    }
+                    else if (j == 0 or j == 8) {
+                        printf("%c", '*');
+                    }
+                    else if ((i == 1 or i == 3 or i == 5) and (1 < j and j < 7)) {
+                        printf("%c", '-');
+                    }
+                    else if ((i == 2 and j == 6) or (i == 4 and j == 2)) {
+                        printf("%c", '|');
+                    }
+                    else printf(" ");
+                }
+                printf("\n");
+            }
+            printf("\n");
+            break;
+        case 3:
+        printf("\n");
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (i == 0 or i == 6) {
+                        printf("%c", '*');
+                    }
+                    else if (j == 0 or j == 8) {
+                        printf("%c", '*');
+                    }
+                    else if ((i == 1 or i == 3 or i == 5) and (1 < j and j < 7)) {
+                        printf("%c", '-');
+                    }
+                    else if ((i == 2 and j == 6) or (i == 4 and j == 6)) {
+                        printf("%c", '|');
+                    }
+                    else printf(" ");
+                }
+                printf("\n");
+            }
+            printf("\n");
+            break;
+        case 4:
+        printf("\n");
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (i == 0 or i == 6) {
+                        printf("%c", '*');
+                    }
+                    else if (j == 0 or j == 8) {
+                        printf("%c", '*');
+                    }
+                    else if ((i == 3) and (1 < j and j < 6)) {
+                        printf("%c", '-');
+                    }
+                    else if ((i == 1 or i == 2 or i == 3) and (j == 2 or j == 6)) {
+                        printf("%c", '|');
+                    }
+                    else if ((i == 4 or i == 5) and (j == 6)) {
+                        printf("%c", '|');
+                    }
+                    else printf(" ");
+                }
+                printf("\n");
+            }
+            printf("\n");
+            break;
+        case 5:
+        printf("\n");
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (i == 0 or i == 6) {
+                        printf("%c", '*');
+                    }
+                    else if (j == 0 or j == 8) {
+                        printf("%c", '*');
+                    }
+                    else if ((i == 1 or i == 3 or i == 5) and (1 < j and j < 7)) {
+                        printf("%c", '-');
+                    }
+                    else if ((i == 2 and j == 2) or (i == 4 and j == 6)) {
+                        printf("%c", '|');
+                    }
+                    else printf(" ");
+                }
+                printf("\n");
+            }
+            printf("\n");
+            break;
+        case 6:
+        printf("\n");
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (i == 0 or i == 6) {
+                        printf("%c", '*');
+                    }
+                    else if (j == 0 or j == 8) {
+                        printf("%c", '*');
+                    }
+                    else if ((0 < i and i < 5) and (j == 2)) {
+                        printf("%c", '|');
+                    }
+                    else if (i == 4 and j == 6) {
+                        printf("%c", '|');
+                    }
+                    else if ((i == 1 or i == 3 or i == 5) and (2 < j and j < 6)) {
+                        printf("%c", '-');
+                    }
+                    else printf(" ");
+                }
+                printf("\n");
+            }
+            printf("\n");
+            break;
+    }
+}
+
+void score(int a, int b)
+{
+    printf("\n%s%d\n", "Очки игрока: ", a);
+    printf("\n%s%d\n", "Очки компьютера: ", b);
+}
+
+void endgame(int a, int b)
+{
+    if (a > b) {
+        printf("\n%s\n", "Победил игрок!");
+    }
+    else if (a < b) {
+        printf("\n%s\n", "Победил компьютер!");
+    }
+    else if (a == b) {
+        printf("\n%s\n", "Ничья!");
+    }
+}
+
+int whofirststep()
+{
+    int a;
+    cout << "\nХодить первым - 1, Вторым - 2: ";
+    cin >> a;
+    return a;
+}
+
+void game()
+{
+    int cflip1, cflip2, pflip1, pflip2, a = 1, x, sumc = 0, sump = 0;
+    x = whofirststep();
+    srand(time(NULL));
+    while (a <= 4) {
+        printf("\n%s%d\n", "Раунд ", a);
+        if (x == 2) {
+            cflip1 = rand() % 6 + 1;
+            cflip2 = rand() % 6 + 1;
+            sumc += cflip1 + cflip2;
+            printf("\n%s ", "Кубики компьютера:");
+            kubic(cflip1);
+            kubic(cflip2);
+            pflip1 = rand() % 6 + 1;
+            pflip2 = rand() % 6 + 1;
+            sump += pflip1 + pflip2;
+            printf("\n%s ", "Кубики игрока:");
+            kubic(pflip1);
+            kubic(pflip2);
+            score(sump, sumc);
+        }
+        else {
+            pflip1 = rand() % 6 + 1;
+            pflip2 = rand() % 6 + 1;
+            sump += pflip1 + pflip2;
+            printf("\n%s ", "Кубики игрока:");
+            kubic(pflip1);
+            kubic(pflip2);
+            cflip1 = rand() % 6 + 1;
+            cflip2 = rand() % 6 + 1;
+            sumc += cflip1 + cflip2;
+            printf("\n%s ", "Кубики компьютера:");
+            kubic(cflip1);
+            kubic(cflip2);
+            score(sump, sumc);
+        }
+        a++;
+    }
+    endgame(sump, sumc);
+}
+
+int main()
+{
+    game();
+    return 0;
+}
