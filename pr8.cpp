@@ -41,7 +41,7 @@ void printInfoAboutNeededRouteNum(Marsh * a, int size, string routeNumber) {
             printMarsh(a[i]);
             count -= 1;
         }
-        else if (count == 6) {
+        else if (count == 7) {
             printf("\n%s\n", "There are no such route numbers");
         }
         else {
