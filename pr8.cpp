@@ -29,6 +29,13 @@ void sortByRouteNumbers(Marsh * a, int size) {
             if (first > second) {
                 smallestnum = j;
             }
+            else if (first == second) {
+                char first1 = a[j].routeNumber[1];
+                char second1 = a[smallestnum].routeNumber[1];
+                if (first1 > second1) {
+                    swap(a[j], a[smallestnum]);
+                }
+            }
             swap(a[i], a[smallestnum]);
         }
     }
@@ -41,7 +48,7 @@ void printInfoAboutNeededRouteNum(Marsh * a, int size, string routeNumber) {
             printMarsh(a[i]);
             count -= 1;
         }
-        else if (count == 7) {
+        else if (count == 6) {
             printf("\n%s\n", "There are no such route numbers");
         }
         else {
@@ -58,6 +65,13 @@ void sortByDestinations(Aeroflot * a, int size) {
             char second = a[smallestnum].flightDestinationName[0];
             if (first > second) {
                 smallestnum = j;
+            }
+            else if (first == second) {
+                char first1 = a[j].flightDestinationName[1];
+                char second1 = a[smallestnum].flightDestinationName[1];
+                if (first1 > second1) {
+                    swap(a[j], a[smallestnum]);
+                }
             }
             swap(a[i], a[smallestnum]);
         }
@@ -96,6 +110,9 @@ void aeroflotArrayFilling(Aeroflot * a, int size) {
         printf("\n");
     }
     sortByDestinations(a, size);
+    for (int i = 0; i < size; i++) {
+        printFlight(a[i]);
+    }
 }
 
 void marshArrayFilling(Marsh * a, int size) {
@@ -110,6 +127,9 @@ void marshArrayFilling(Marsh * a, int size) {
         printf("\n");
     }
     sortByRouteNumbers(a, size);
+    for (int i = 0; i < size; i++) {
+        cout << a[i].nameOfTheStartingPointOfTheRoute << "\t" << a[i].nameOfTheDestinationOfTheRoute << "\t" << a[i].routeNumber << endl;
+    }
 }
 
 int main()
